@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jokes</title>
+</head><style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    body{
+        background-color: rgba(218, 176, 11, 0.888);
+    }
+    
+    
+    .wrapper{
+        height: fit-content;
+    display: block;
+    background-color: black;
+    position: absolute;
+    width: 110vmin;
+    top: 24px;
+    left: 128px;
+    padding: 50px 45px;
+
+    }
+    h1{
+        padding: 12px;
+    display: block;
+    text-align: center;
+    width: 200px;
+    font-size: 45px;
+    }
+    p{display: block;
+        color: white;
+        font-size: 10px;
+    }
+    @media (max-width:500px) {
+        .wrapper{
+            height: fit-content;
+    display: block;
+    background-color: black;
+    position: absolute;
+    width: 77vmin;
+    top: 148px;
+    left: 38px;
+        }
+        p{
+            font-size: 15px;
+        }
+        
+    }
+    button{
+        background-color: yellow;
+        border-radius: 25px;
+    }
+    button:hover{
+        
+    }
+</style>
+<body>
+    <div class="wrapper">
+    <h1 class="h1">😂</h1>
+ <p id="joke"></p>   
+ <audio id="song">
+    <source src="sinister-laugh-140131.mp3" type="audio/mpeg">
+  
+</audio>
+<button id="btn">Get Random jokes</button>
+</div>
+<script>
+    const joke=document.getElementById('joke')
+    const btn=document.getElementById('btn')
+    const url ="https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,explicit&type=single"
+ let jokes =()=>{
+    fetch(url)
+    .then(data => data.json())
+    .then(item=>
+        joke.textContent=`${item.joke}`
+            ,song.play())
+ }
+ btn.addEventListener('click',jokes)
+ 
+</script>
+</body>
+</html>
